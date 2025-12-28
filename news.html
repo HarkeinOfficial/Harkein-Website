@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>News & Updates — Harkein Synergies</title>
+  <link rel="icon" href="https://i.ibb.co/RpKv1djv/file-0000000043cc620a9e2842b1759c4eac-conversation-id-681fc7fd-2814-800f-981e-7caabb6ca2dd-message-i.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* CORPORATE THEME */
+    :root{ --navy: #0f172a; --gold: #d4af37; --grey: #f8fafc; --text: #334155; --white: #ffffff; }
+    *{box-sizing:border-box}
+    body{font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif; margin:0; background:var(--grey); color:var(--text); line-height: 1.6;}
+
+    /* HEADER & NAV */
+    header{background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(10px); color:white; position:sticky; top:0; z-index:1000; border-bottom: 3px solid var(--gold);}
+    .container{max-width:1200px; margin:0 auto; padding:0 20px;}
+    .topbar{display:flex; align-items:center; justify-content:space-between; padding:15px 0;}
+    .logo-img img { height: 70px; width: auto; border-radius: 4px; border: 2px solid var(--gold); }
+    
+    .hamburger { display: block; font-size: 28px; color: var(--gold); cursor: pointer; }
+    .nav-menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--navy); flex-direction: column; align-items: center; padding: 20px 0; gap: 20px; display: none; border-bottom: 3px solid var(--gold); }
+    .nav-menu.active { display: flex; }
+    .nav-menu a { color: white; text-decoration: none; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; }
+    .nav-menu a:hover { color: var(--gold); }
+    .nav-btn { border: 1px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
+
+    /* PAGE HERO */
+    .page-hero { height: 40vh; background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; position: relative; }
+    .page-hero::after { content:''; position:absolute; inset:0; background: rgba(15,23,42,0.85); }
+    .hero-text { position: relative; z-index: 2; text-align: center; color: white; }
+    .hero-text h1 { font-size: 48px; margin: 0; font-weight: 800; letter-spacing: 1px; }
+
+    /* NEWS GRID */
+    .news-section { padding: 80px 0; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    
+    .news-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    .news-img { width: 100%; height: 200px; object-fit: cover; }
+    .news-content { padding: 25px; }
+    .news-date { color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; }
+    .news-card h3 { color: var(--navy); margin: 0 0 15px; font-size: 20px; }
+    .news-card p { font-size: 14px; color: #64748b; margin-bottom: 20px; }
+    .read-more { color: var(--navy); font-weight: 700; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+    .read-more:hover { color: var(--gold); }
+
+    /* FOOTER */
+    footer{background:#0b1120; color:rgba(255,255,255,0.6); padding:60px 0; font-size: 14px;}
+    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container topbar">
+      <a href="index.html" class="logo-img"><img src="9227.jpg" alt="HARKEIN"></a>
+      <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="news.html" style="color:var(--gold);">News</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero">
+        <div class="hero-text">
+            <h1>COMPANY NEWS</h1>
+            <p style="color:var(--gold);">Latest Updates & Strategic Announcements</p>
+        </div>
+    </div>
+
+    <section class="container news-section">
+        <div class="news-grid">
+            
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="Meeting" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">Dec 28, 2025</span>
+                    <h3>Strategic Expansion into Agro-Export</h3>
+                    <p>Harkein Synergies has officially launched its agricultural export division. We are now sourcing premium cocoa and cashew for international markets.</p>
+                    <a href="contact.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Construction" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">Dec 15, 2025</span>
+                    <h3>New Housing Project in Osogbo</h3>
+                    <p>Construction has begun on our latest residential estate project. The Grazeland Estate will feature 20 units of modern duplexes.</p>
+                    <a href="properties.html" class="read-more">View Details →</a>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="Partnership" class="news-img">
+                <div class="news-content">
+                    <span class="news-date">Nov 30, 2025</span>
+                    <h3>Partnership with Global Logistics Giants</h3>
+                    <p>We have secured a partnership to streamline our freight forwarding services from China, ensuring faster delivery times for clients.</p>
+                    <a href="procurement.html" class="read-more">Learn More →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+        <div class="footer-col">
+            <h4>Harkein Synergies</h4>
+            <p>Building the Future.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="news.html">News & Updates</a></li>
+                <li><a href="gallery.html">Project Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() { document.getElementById("navMenu").classList.toggle("active"); }
+  </script>
+</body>
+</html>
