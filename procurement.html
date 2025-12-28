@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infrastructure & Engineering | Harkein Synergies</title>
+    <title>Logistics & Trade | Harkein Synergies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* --- THEME --- */
@@ -16,7 +16,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-light); color: #333; }
 
-        /* --- NAV (Consistent) --- */
+        /* --- NAV --- */
         nav { background: var(--primary-navy); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent-gold); }
         .logo { color: var(--text-white); font-size: 1.5rem; font-weight: bold; text-decoration: none; }
         .logo span { color: var(--accent-gold); }
@@ -25,7 +25,7 @@
 
         /* --- HEADER --- */
         .page-header {
-            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.8)), url('https://source.unsplash.com/1600x900/?powerline,construction');
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.8)), url('https://source.unsplash.com/1600x900/?container,ship');
             background-size: cover;
             background-position: center;
             color: white;
@@ -35,57 +35,49 @@
         .page-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .page-header p { color: var(--accent-gold); font-size: 1.2rem; }
 
-        /* --- SECTOR TABS --- */
-        .sector-title {
-            text-align: center;
-            margin: 50px 0 30px;
+        /* --- SECTIONS --- */
+        .split-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 60px 10%;
+            align-items: center;
+            gap: 50px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+        .split-section:nth-child(even) { background: var(--bg-light); flex-direction: row-reverse; }
+
+        .text-box { flex: 1; min-width: 300px; }
+        .text-box h2 { color: var(--primary-navy); font-size: 2rem; margin-bottom: 20px; }
+        .text-box p { margin-bottom: 20px; line-height: 1.8; color: #555; }
+        
+        .list-box { list-style: none; margin-bottom: 25px; }
+        .list-box li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
+        .list-box li i { color: var(--accent-gold); }
+
+        .cta-btn {
+            padding: 12px 30px;
+            background: var(--primary-navy);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta-btn:hover { background: var(--accent-gold); color: var(--primary-navy); }
+
+        .image-box {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background: #ddd;
+            border-radius: 10px;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
             color: var(--primary-navy);
-            font-size: 2rem;
-            text-transform: uppercase;
         }
-        .sector-title span { border-bottom: 3px solid var(--accent-gold); }
-
-        /* --- ENGINEERING GRID (Oil/Gas + Electrical) --- */
-        .eng-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 0 10% 60px;
-        }
-        
-        .eng-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            border-top: 5px solid var(--primary-navy);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        .eng-card:hover { transform: translateY(-5px); border-top-color: var(--accent-gold); }
-        .eng-icon { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 20px; }
-        
-        .eng-card h3 { color: var(--primary-navy); margin-bottom: 15px; font-size: 1.4rem; }
-        .eng-card ul { list-style: none; padding: 0; }
-        .eng-card li { margin-bottom: 10px; padding-left: 20px; position: relative; color: #555; }
-        .eng-card li::before { content: "⚡"; position: absolute; left: 0; color: var(--primary-navy); font-size: 0.8rem; }
-
-        /* --- REAL ESTATE GRID --- */
-        .property-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 0 10% 80px;
-        }
-        .property-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .p-img { height: 200px; background: #ddd; display: flex; align-items: center; justify-content: center; color: #666; }
-        .p-info { padding: 20px; }
-        .price { color: var(--accent-gold); font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 10px; }
-        .btn-sm { display: inline-block; padding: 8px 20px; background: var(--primary-navy); color: white; text-decoration: none; border-radius: 4px; font-size: 0.9rem; }
 
         /* --- MOBILE --- */
         @media (max-width: 768px) { .nav-links { display: none; } }
@@ -98,83 +90,57 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="properties.html" style="color:var(--accent-gold);">Engineering</a></li>
-            <li><a href="solutions.html">Enterprise</a></li>
+            <li><a href="properties.html">Infrastructure</a></li>
+            <li><a href="procurement.html" style="color:var(--accent-gold);">Logistics & Trade</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <header class="page-header">
-        <h1>Infrastructure & Engineering</h1>
-        <p>Real Estate. Electrical. Energy.</p>
+        <h1>Logistics & Global Trade</h1>
+        <p>Connecting Markets. Moving the World.</p>
     </header>
 
-    <h2 class="sector-title"><span>Engineering Services</span></h2>
-    <div class="eng-grid">
-        
-        <div class="eng-card">
-            <i class="fas fa-bolt eng-icon"></i>
-            <h3>Electrical Section</h3>
-            <p style="margin-bottom:15px;">Reliable electrical solutions for industrial and residential projects.</p>
-            <ul>
-                <li>Estate Wiring & Electrification</li>
-                <li>Sales of Transformers & Cables</li>
-                <li>Installation of Electrical Panels</li>
-                <li>General Electrical Maintenance</li>
+    <section class="split-section">
+        <div class="text-box">
+            <h2>Logistics & Haulage</h2>
+            <p>
+                Efficient movement is the backbone of any economy. Harkein Synergies provides top-tier logistics solutions. 
+                Whether it is freight forwarding from China or interstate haulage within Nigeria, we ensure your goods arrive on time and intact.
+            </p>
+            <ul class="list-box">
+                <li><i class="fas fa-truck"></i> Interstate Haulage & Trucking</li>
+                <li><i class="fas fa-ship"></i> Global Freight Forwarding (Import/Export)</li>
+                <li><i class="fas fa-warehouse"></i> Warehousing & Distribution</li>
             </ul>
+            <a href="contact.html" class="cta-btn">Get Shipping Quote</a>
         </div>
+        <div class="image-box">
+            <i class="fas fa-shipping-fast"></i>
+        </div>
+    </section>
 
-        <div class="eng-card">
-            <i class="fas fa-gas-pump eng-icon"></i>
-            <h3>Energy & Petroleum</h3>
-            <p style="margin-bottom:15px;">Bulk supply of petroleum products to power your business.</p>
-            <ul>
-                <li>Diesel (AGO) Bulk Supply</li>
-                <li>Cooking Gas (LPG) Distribution</li>
-                <li>Generator Fueling Contracts</li>
-                <li>Lubricants & Oils</li>
+    <section class="split-section">
+        <div class="text-box">
+            <h2>Agro-Allied & Export</h2>
+            <p>
+                We are committed to non-oil export as a driver of economic growth. Harkein Synergies sources, processes, and exports 
+                premium Nigerian agricultural produce to international markets.
+            </p>
+            <ul class="list-box">
+                <li><i class="fas fa-leaf"></i> Cash Crops (Cocoa, Cashew, Sesame)</li>
+                <li><i class="fas fa-carrot"></i> Processed Food Export (Garri, Yam Flour)</li>
+                <li><i class="fas fa-globe-africa"></i> Sustainable Sourcing Partnerships</li>
             </ul>
+            <a href="contact.html" class="cta-btn">Partner With Us</a>
         </div>
-
-    </div>
-
-    <h2 class="sector-title"><span>Real Estate Portfolio</span></h2>
-    <div class="property-grid">
-        
-        <div class="property-card">
-            <div class="p-img"><i class="fas fa-home fa-3x"></i></div>
-            <div class="p-info">
-                <h3>Luxury Duplex, Osogbo</h3>
-                <p>Grazeland Estate, Osun State</p>
-                <span class="price">₦85,000,000</span>
-                <a href="contact.html" class="btn-sm">Schedule Viewing</a>
-            </div>
+        <div class="image-box">
+            <i class="fas fa-seedling"></i>
         </div>
-
-        <div class="property-card">
-            <div class="p-img"><i class="fas fa-map-marked-alt fa-3x"></i></div>
-            <div class="p-info">
-                <h3>Commercial Land</h3>
-                <p>Lekki-Epe Expressway, Lagos</p>
-                <span class="price">₦45,000,000 / Plot</span>
-                <a href="contact.html" class="btn-sm">Inquire Now</a>
-            </div>
-        </div>
-
-        <div class="property-card">
-            <div class="p-img"><i class="fas fa-tools fa-3x"></i></div>
-            <div class="p-info">
-                <h3>Facility Management</h3>
-                <p>Maintenance for Estates & Plazas</p>
-                <span class="price">Contact for Quote</span>
-                <a href="contact.html" class="btn-sm">Learn More</a>
-            </div>
-        </div>
-
-    </div>
+    </section>
 
     <footer style="background:var(--primary-navy); color:white; text-align:center; padding:20px;">
-        <p>&copy; 2025 Harkein Synergies Limited. Infrastructure & Engineering.</p>
+        <p>&copy; 2025 Harkein Synergies Limited. Logistics Division.</p>
     </footer>
 
 </body>
