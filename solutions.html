@@ -17,7 +17,24 @@
     .container{max-width:1200px; margin:0 auto; padding:0 20px;}
     .topbar{display:flex; align-items:center; justify-content:space-between; padding:15px 0;}
     
-    .logo-img img { height: 45px; width: auto; border-radius: 4px; border: 2px solid var(--gold); margin-top: 5px; }
+    .logo-img img { height: 70px; width: auto; border-radius: 4px; border: 2px solid var(--gold); margin-top: 5px; }
+
+    /* SOCIAL ICONS IN HEADER */
+    .header-social {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .social-icon {
+      color: var(--gold);
+      font-size: 20px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      color: white;
+      transform: scale(1.1);
+    }
 
     nav a{color:white; text-decoration:none; margin-left:25px; font-weight:500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s;}
     nav a:hover { color: var(--gold); }
@@ -40,23 +57,77 @@
     
     .text-content { flex: 1; }
     .text-content h2 { color: var(--navy); font-size: 28px; margin-bottom: 20px; border-left: 5px solid var(--gold); padding-left: 20px; }
-    .text-content p { font-size: 16px; color: #64748b; margin-bottom: 20px; }
+    .text-content p { font-size: 16px; color: #64748b; margin-bottom: 20px; line-height: 1.8; }
     
     .feature-list { list-style: none; padding: 0; }
     .feature-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
     .feature-list li i { color: var(--gold); width: 25px; text-align: center; }
 
-    .image-content { flex: 1; height: 350px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #eee; }
-    .image-content img { width: 100%; height: 100%; object-fit: cover; }
-    
-    /* ICON OVERLAY FOR IMAGE (Optional styling) */
-    .icon-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; color: rgba(255,255,255,0.8); z-index: 2; }
+    /* CONSISTENT IMAGE SIZING */
+    .image-content { 
+      flex: 1; 
+      height: 400px; 
+      position: relative; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+      background: #eee; 
+    }
+    .image-content img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+    .split-section:hover .image-content img {
+      transform: scale(1.05);
+    }
 
-    /* CTA BUTTON */
-    .btn-main { display: inline-block; padding: 12px 30px; background: var(--navy); color: white; text-decoration: none; font-weight: 700; border-radius: 4px; transition: 0.3s; margin-top: 20px; }
+    /* CTA BUTTONS */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-main { 
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 30px; 
+      background: var(--navy); 
+      color: white; 
+      text-decoration: none; 
+      font-weight: 700; 
+      border-radius: 4px; 
+      transition: 0.3s; 
+    }
     .btn-main:hover { background: var(--gold); color: var(--navy); }
+    
+    .btn-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 30px;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .btn-email:hover { background: #c19a2e; }
 
-    /* FOOTER (Matched exactly) */
+    /* LOADING STATE */
+    .loading {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    /* FOOTER */
     footer{background:#0b1120; color:rgba(255,255,255,0.6); padding:60px 0; font-size: 14px; margin-top: 50px;}
     .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
     .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
@@ -65,7 +136,31 @@
     .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
     .footer-col a:hover { color: var(--gold); }
     
-    @media(max-width:768px){ .topbar { flex-direction: column; gap: 15px; } nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .split-section { flex-direction: column !important; } .image-content { width: 100%; height: 250px; } }
+    /* FOOTER SOCIAL ICONS */
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .footer-social a {
+      color: var(--gold);
+      font-size: 24px;
+      transition: 0.3s;
+    }
+    .footer-social a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    @media(max-width:768px){ 
+      .topbar { flex-direction: column; gap: 15px; } 
+      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } 
+      .split-section { flex-direction: column !important; } 
+      .image-content { width: 100%; height: 300px; }
+      .hero-text h1 { font-size: 32px; }
+      .action-buttons { flex-direction: column; }
+      .btn-main, .btn-email { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -75,12 +170,23 @@
       <a href="index.html" class="logo-img">
         <img src="9227.jpg" alt="HARKEIN SYNERGIES">
       </a>
+      <div class="header-social">
+        <a href="https://instagram.com/harkein_synergies" target="_blank" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:infoharkein@gmail.com" class="social-icon" title="Email Us">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/2349026824546" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="properties.html">Properties</a>
         <a href="solutions.html" style="color:var(--gold);">Solutions</a>
-        <a href="https://instagram.com/harkein_synergies" target="_blank" class="nav-social">INSTAGRAM</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -93,57 +199,8 @@
         </div>
     </div>
 
-    <section class="container">
-        
-        <div class="split-section">
-            <div class="text-content">
-                <h2>Data Analysis & Intelligence</h2>
-                <p>Data is the new currency. We help businesses transform raw numbers into actionable strategies. Our team utilizes advanced analytics (Python, SQL) to optimize supply chains, predict market trends, and reduce operational costs.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-chart-line"></i> Business Intelligence Dashboards</li>
-                    <li><i class="fas fa-database"></i> Supply Chain Optimization Analytics</li>
-                    <li><i class="fas fa-project-diagram"></i> Market Trend Prediction</li>
-                </ul>
-                <a href="https://wa.me/2349026824546?text=I%20need%20Data%20Analysis%20Services" class="btn-main">Consult With Us</a>
-            </div>
-            <div class="image-content">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Analysis">
-            </div>
-        </div>
-
-        <div class="split-section">
-            <div class="text-content">
-                <h2>FMCG Import & Manufacturing</h2>
-                <p>As licensed Manufacturers' Representatives, Harkein Synergies facilitates the importation and distribution of high-demand Fast Moving Consumer Goods. We connect global brands to local consumers.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-boxes"></i> Bulk Distribution to Supermarkets</li>
-                    <li><i class="fas fa-ship"></i> Import of Household Goods</li>
-                    <li><i class="fas fa-tags"></i> Private Label Manufacturing</li>
-                </ul>
-                <a href="https://wa.me/2349026824546?text=I%20want%20to%20order%20FMCG%20Products" class="btn-main">View Product Catalog</a>
-            </div>
-            <div class="image-content">
-                <img src="https://images.unsplash.com/photo-1580913428023-02c69e1a0444?auto=format&fit=crop&w=800&q=80" alt="FMCG Warehouse">
-            </div>
-        </div>
-
-        <div class="split-section">
-            <div class="text-content">
-                <h2>Electrical Engineering Dept</h2>
-                <p>Reliable power infrastructure is non-negotiable. Our Electrical Department handles procurement and installation for large-scale projects, ensuring your facilities are powered safely and efficiently.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-bolt"></i> Estate Wiring & Electrification</li>
-                    <li><i class="fas fa-plug"></i> Sales of Transformers & Cables</li>
-                    <li><i class="fas fa-solar-panel"></i> Installation of Electrical Panels</li>
-                    <li><i class="fas fa-tools"></i> General Electrical Maintenance</li>
-                </ul>
-                <a href="https://wa.me/2349026824546?text=I%20need%20Electrical%20Services" class="btn-main">Request Engineering Service</a>
-            </div>
-            <div class="image-content">
-                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical Works">
-            </div>
-        </div>
-
+    <section class="container" id="solutions-container">
+        <div class="loading">Loading solutions...</div>
     </section>
   </main>
 
@@ -152,6 +209,17 @@
         <div class="footer-col">
             <h4>Harkein Synergies</h4>
             <p>A multi-sector conglomerate dedicated to excellence in Logistics, Real Estate, and Fashion.</p>
+            <div class="footer-social">
+              <a href="https://instagram.com/harkein_synergies" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:infoharkein@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://wa.me/2349026824546" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
         </div>
         <div class="footer-col">
             <h4>Corporate</h4>
@@ -171,12 +239,155 @@
         </div>
         <div class="footer-col">
             <h4>Connect</h4>
-            <p>&copy; 2025 Harkein Synergies.</p>
+            <p>Email: <a href="mailto:infoharkein@gmail.com">infoharkein@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2349026824546">+234 902 682 4546</a></p>
+            <p style="margin-top: 15px;">&copy; 2025 Harkein Synergies.</p>
             <p style="font-size: 12px; margin-top: 10px;">
                 <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
             </p>
         </div>
     </div>
   </footer>
+
+  <script>
+    const API_URL = 'https://harkein-backend-production.up.railway.app';
+    const WA_PHONE = '2349026824546';
+    const EMAIL = 'infoharkein@gmail.com';
+
+    async function loadSolutions() {
+      try {
+        const response = await fetch(`${API_URL}/api/items/solutions`);
+        const items = await response.json();
+        
+        const container = document.getElementById('solutions-container');
+        
+        if (items.length === 0) {
+          // Show default solutions
+          container.innerHTML = `
+            <div class="split-section">
+              <div class="text-content">
+                <h2>Data Analysis & Intelligence</h2>
+                <p>Data is the new currency. We help businesses transform raw numbers into actionable strategies. Our team utilizes advanced analytics (Python, SQL) to optimize supply chains, predict market trends, and reduce operational costs.</p>
+                <ul class="feature-list">
+                  <li><i class="fas fa-chart-line"></i> Business Intelligence Dashboards</li>
+                  <li><i class="fas fa-database"></i> Supply Chain Optimization Analytics</li>
+                  <li><i class="fas fa-project-diagram"></i> Market Trend Prediction</li>
+                </ul>
+                <div class="action-buttons">
+                  <a href="https://wa.me/${WA_PHONE}?text=I%20need%20Data%20Analysis%20Services" class="btn-main" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Consult With Us
+                  </a>
+                  <a href="mailto:${EMAIL}?subject=Data Analysis Inquiry" class="btn-email">
+                    <i class="fas fa-envelope"></i> Email Us
+                  </a>
+                </div>
+              </div>
+              <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Analysis">
+              </div>
+            </div>
+
+            <div class="split-section">
+              <div class="text-content">
+                <h2>FMCG Import & Manufacturing</h2>
+                <p>As licensed Manufacturers' Representatives, Harkein Synergies facilitates the importation and distribution of high-demand Fast Moving Consumer Goods. We connect global brands to local consumers.</p>
+                <ul class="feature-list">
+                  <li><i class="fas fa-boxes"></i> Bulk Distribution to Supermarkets</li>
+                  <li><i class="fas fa-ship"></i> Import of Household Goods</li>
+                  <li><i class="fas fa-tags"></i> Private Label Manufacturing</li>
+                </ul>
+                <div class="action-buttons">
+                  <a href="https://wa.me/${WA_PHONE}?text=I%20want%20to%20order%20FMCG%20Products" class="btn-main" target="_blank">
+                    <i class="fab fa-whatsapp"></i> View Catalog
+                  </a>
+                  <a href="mailto:${EMAIL}?subject=FMCG Product Inquiry" class="btn-email">
+                    <i class="fas fa-envelope"></i> Email Us
+                  </a>
+                </div>
+              </div>
+              <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1580913428023-02c69e1a0444?auto=format&fit=crop&w=800&q=80" alt="FMCG Warehouse">
+              </div>
+            </div>
+
+            <div class="split-section">
+              <div class="text-content">
+                <h2>Electrical Engineering Dept</h2>
+                <p>Reliable power infrastructure is non-negotiable. Our Electrical Department handles procurement and installation for large-scale projects, ensuring your facilities are powered safely and efficiently.</p>
+                <ul class="feature-list">
+                  <li><i class="fas fa-bolt"></i> Estate Wiring & Electrification</li>
+                  <li><i class="fas fa-plug"></i> Sales of Transformers & Cables</li>
+                  <li><i class="fas fa-solar-panel"></i> Installation of Electrical Panels</li>
+                  <li><i class="fas fa-tools"></i> General Electrical Maintenance</li>
+                </ul>
+                <div class="action-buttons">
+                  <a href="https://wa.me/${WA_PHONE}?text=I%20need%20Electrical%20Services" class="btn-main" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Request Service
+                  </a>
+                  <a href="mailto:${EMAIL}?subject=Electrical Engineering Inquiry" class="btn-email">
+                    <i class="fas fa-envelope"></i> Email Us
+                  </a>
+                </div>
+              </div>
+              <div class="image-content">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Electrical Works">
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        // Display dynamic solutions from database
+        container.innerHTML = items.map((item, index) => `
+          <div class="split-section">
+            <div class="text-content">
+              <h2>${item.data.title}</h2>
+              <p>${item.data.desc}</p>
+              <div class="action-buttons">
+                <a href="https://wa.me/${WA_PHONE}?text=I%20am%20interested%20in%20${encodeURIComponent(item.data.title)}" 
+                   class="btn-main" target="_blank">
+                   <i class="fab fa-whatsapp"></i> Contact Us
+                </a>
+                <a href="mailto:${EMAIL}?subject=Inquiry: ${encodeURIComponent(item.data.title)}" 
+                   class="btn-email">
+                   <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="${item.data.img}" alt="${item.data.title}" onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80'">
+            </div>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        console.error('Error loading solutions:', error);
+        // Show default content on error
+        document.getElementById('solutions-container').innerHTML = `
+          <div class="split-section">
+            <div class="text-content">
+              <h2>Enterprise Solutions</h2>
+              <p>Contact us for more information about our enterprise and technical services.</p>
+              <div class="action-buttons">
+                <a href="https://wa.me/${WA_PHONE}" class="btn-main" target="_blank">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:${EMAIL}" class="btn-email">
+                  <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Solutions">
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Load solutions when page loads
+    loadSolutions();
+  </script>
+
 </body>
 </html>
