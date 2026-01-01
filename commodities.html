@@ -17,7 +17,24 @@
     .container{max-width:1200px; margin:0 auto; padding:0 20px;}
     .topbar{display:flex; align-items:center; justify-content:space-between; padding:15px 0;}
     
-    .logo-img img { height: 45px; width: auto; border-radius: 4px; border: 2px solid var(--gold); margin-top: 5px; }
+    .logo-img img { height: 70px; width: auto; border-radius: 4px; border: 2px solid var(--gold); margin-top: 5px; }
+
+    /* SOCIAL ICONS IN HEADER */
+    .header-social {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .social-icon {
+      color: var(--gold);
+      font-size: 20px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      color: white;
+      transform: scale(1.1);
+    }
 
     nav a{color:white; text-decoration:none; margin-left:25px; font-weight:500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s;}
     nav a:hover { color: var(--gold); }
@@ -39,20 +56,76 @@
     
     .text-content { flex: 1; }
     .text-content h2 { color: var(--navy); font-size: 32px; margin-bottom: 20px; border-left: 5px solid var(--gold); padding-left: 20px; }
-    .text-content p { font-size: 16px; color: #64748b; margin-bottom: 20px; }
+    .text-content p { font-size: 16px; color: #64748b; margin-bottom: 20px; line-height: 1.8; }
     
     .feature-list { list-style: none; padding: 0; }
     .feature-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: 500; }
     .feature-list li i { color: var(--gold); width: 20px; }
 
-    .image-content { flex: 1; height: 400px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-    .image-content img { width: 100%; height: 100%; object-fit: cover; }
+    /* CONSISTENT IMAGE SIZING */
+    .image-content { 
+      flex: 1; 
+      height: 400px; 
+      position: relative; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+    }
+    .image-content img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+    .split-section:hover .image-content img {
+      transform: scale(1.05);
+    }
 
-    /* CTA BUTTON */
-    .btn-main { display: inline-block; padding: 12px 30px; background: var(--navy); color: white; text-decoration: none; font-weight: 700; border-radius: 4px; transition: 0.3s; margin-top: 20px; }
+    /* CTA BUTTONS */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-main { 
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 30px; 
+      background: var(--navy); 
+      color: white; 
+      text-decoration: none; 
+      font-weight: 700; 
+      border-radius: 4px; 
+      transition: 0.3s; 
+    }
     .btn-main:hover { background: var(--gold); color: var(--navy); }
+    
+    .btn-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 30px;
+      background: var(--gold);
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .btn-email:hover { background: #c19a2e; }
 
-    /* FOOTER (Matched exactly) */
+    /* LOADING STATE */
+    .loading {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    /* FOOTER */
     footer{background:#0b1120; color:rgba(255,255,255,0.6); padding:60px 0; font-size: 14px; margin-top: 50px;}
     .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
     .footer-col h4 { color: white; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
@@ -61,7 +134,31 @@
     .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
     .footer-col a:hover { color: var(--gold); }
     
-    @media(max-width:768px){ .topbar { flex-direction: column; gap: 15px; } nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .split-section { flex-direction: column !important; } .image-content { width: 100%; height: 300px; } }
+    /* FOOTER SOCIAL ICONS */
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .footer-social a {
+      color: var(--gold);
+      font-size: 24px;
+      transition: 0.3s;
+    }
+    .footer-social a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    @media(max-width:768px){ 
+      .topbar { flex-direction: column; gap: 15px; } 
+      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } 
+      .split-section { flex-direction: column !important; } 
+      .image-content { width: 100%; height: 300px; }
+      .hero-text h1 { font-size: 32px; }
+      .action-buttons { flex-direction: column; }
+      .btn-main, .btn-email { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -71,11 +168,22 @@
       <a href="index.html" class="logo-img">
         <img src="9227.jpg" alt="HARKEIN SYNERGIES">
       </a>
+      <div class="header-social">
+        <a href="https://instagram.com/harkein_synergies" target="_blank" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:infoharkein@gmail.com" class="social-icon" title="Email Us">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/2349026824546" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
       <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="properties.html">Properties</a>
-        <a href="https://instagram.com/harkein_synergies" target="_blank" class="nav-social">INSTAGRAM</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -88,42 +196,8 @@
         </div>
     </div>
 
-    <section class="container">
-        
-        <div class="split-section">
-            <div class="text-content">
-                <h2>Petroleum & Energy Supply</h2>
-                <p>Harkein Synergies leverages its General Contracting license to serve as a reliable downstream partner. We facilitate the bulk supply of essential petroleum products to power industries, residential estates, and commercial hubs.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-gas-pump"></i> Bulk Diesel (AGO) Supply for Estates & Factories</li>
-                    <li><i class="fas fa-burn"></i> Liquefied Petroleum Gas (LPG) Distribution</li>
-                    <li><i class="fas fa-cogs"></i> Generator Fueling Contracts</li>
-                    <li><i class="fas fa-truck-moving"></i> Reliable Logistics & Delivery</li>
-                </ul>
-                <a href="https://wa.me/2349026824546?text=I%20need%20a%20quote%20for%20Diesel%20Supply" class="btn-main">Request Fuel Quote</a>
-            </div>
-            <div class="image-content">
-               <img src="https://i.ibb.co/SDdLxPqf/istockphoto-517448683-612x612.jpg" alt="Petroleum Supply">
-            </div>
-        </div>
-
-        <div class="split-section">
-            <div class="text-content">
-                <h2>Agro-Allied & Export</h2>
-                <p>We are bridging the gap between Nigerian farms and the global market. Our agricultural division focuses on the sourcing, processing, and export of high-value cash crops and processed food items.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-leaf"></i> Export of Cocoa, Cashew, and Sesame Seeds</li>
-                    <li><i class="fas fa-mortar-pestle"></i> Processed Food (Garri, Yam Flour)</li>
-                    <li><i class="fas fa-handshake"></i> Sustainable Sourcing from Local Farmers</li>
-                    <li><i class="fas fa-globe-africa"></i> Non-Oil Export Consultancy</li>
-                </ul>
-                <a href="https://wa.me/2349026824546?text=I%20want%20to%20partner%20on%20Agro%20Export" class="btn-main">Partner With Us</a>
-            </div>
-            <div class="image-content">
-                <img src="https://i.ibb.co/B2SRSRRd/images-1.jpg" alt="Agricultural Export">
-            </div>
-        </div>
-
+    <section class="container" id="services-container">
+        <div class="loading">Loading services...</div>
     </section>
   </main>
 
@@ -132,6 +206,17 @@
         <div class="footer-col">
             <h4>Harkein Synergies</h4>
             <p>A multi-sector conglomerate dedicated to excellence in Logistics, Real Estate, and Fashion.</p>
+            <div class="footer-social">
+              <a href="https://instagram.com/harkein_synergies" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:infoharkein@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://wa.me/2349026824546" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
         </div>
         <div class="footer-col">
             <h4>Corporate</h4>
@@ -146,17 +231,137 @@
             <ul>
                 <li><a href="properties.html">Properties</a></li>
                 <li><a href="fashion.html">Fashion</a></li>
-                <li><a href="procurement.html">Energy & Agric</a></li>
+                <li><a href="procurement.html">Logistics</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>Connect</h4>
-            <p>&copy; 2025 Harkein Synergies.</p>
+            <p>Email: <a href="mailto:infoharkein@gmail.com">infoharkein@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2349026824546">+234 902 682 4546</a></p>
+            <p style="margin-top: 15px;">&copy; 2025 Harkein Synergies.</p>
             <p style="font-size: 12px; margin-top: 10px;">
                 <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
             </p>
         </div>
     </div>
   </footer>
+
+  <script>
+    const API_URL = 'https://harkein-backend-production.up.railway.app';
+    const WA_PHONE = '2349026824546';
+    const EMAIL = 'infoharkein@gmail.com';
+
+    async function loadServices() {
+      try {
+        const response = await fetch(`${API_URL}/api/items/energy`);
+        const items = await response.json();
+        
+        const container = document.getElementById('services-container');
+        
+        if (items.length === 0) {
+          container.innerHTML = `
+            <div class="split-section">
+              <div class="text-content">
+                <h2>Petroleum & Energy Supply</h2>
+                <p>Harkein Synergies leverages its General Contracting license to serve as a reliable downstream partner. We facilitate the bulk supply of essential petroleum products to power industries, residential estates, and commercial hubs.</p>
+                <ul class="feature-list">
+                  <li><i class="fas fa-gas-pump"></i> Bulk Diesel (AGO) Supply for Estates & Factories</li>
+                  <li><i class="fas fa-burn"></i> Liquefied Petroleum Gas (LPG) Distribution</li>
+                  <li><i class="fas fa-cogs"></i> Generator Fueling Contracts</li>
+                  <li><i class="fas fa-truck-moving"></i> Reliable Logistics & Delivery</li>
+                </ul>
+                <div class="action-buttons">
+                  <a href="https://wa.me/${WA_PHONE}?text=I%20need%20a%20quote%20for%20Diesel%20Supply" class="btn-main">
+                    <i class="fab fa-whatsapp"></i> Request Quote
+                  </a>
+                  <a href="mailto:${EMAIL}?subject=Fuel Supply Inquiry" class="btn-email">
+                    <i class="fas fa-envelope"></i> Email Us
+                  </a>
+                </div>
+              </div>
+              <div class="image-content">
+                <img src="https://i.ibb.co/SDdLxPqf/istockphoto-517448683-612x612.jpg" alt="Petroleum Supply">
+              </div>
+            </div>
+            
+            <div class="split-section">
+              <div class="text-content">
+                <h2>Agro-Allied & Export</h2>
+                <p>We are bridging the gap between Nigerian farms and the global market. Our agricultural division focuses on the sourcing, processing, and export of high-value cash crops and processed food items.</p>
+                <ul class="feature-list">
+                  <li><i class="fas fa-leaf"></i> Export of Cocoa, Cashew, and Sesame Seeds</li>
+                  <li><i class="fas fa-mortar-pestle"></i> Processed Food (Garri, Yam Flour)</li>
+                  <li><i class="fas fa-handshake"></i> Sustainable Sourcing from Local Farmers</li>
+                  <li><i class="fas fa-globe-africa"></i> Non-Oil Export Consultancy</li>
+                </ul>
+                <div class="action-buttons">
+                  <a href="https://wa.me/${WA_PHONE}?text=I%20want%20to%20partner%20on%20Agro%20Export" class="btn-main">
+                    <i class="fab fa-whatsapp"></i> Partner With Us
+                  </a>
+                  <a href="mailto:${EMAIL}?subject=Agro Export Partnership" class="btn-email">
+                    <i class="fas fa-envelope"></i> Email Us
+                  </a>
+                </div>
+              </div>
+              <div class="image-content">
+                <img src="https://i.ibb.co/B2SRSRRd/images-1.jpg" alt="Agricultural Export">
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        // Display dynamic services from database
+        container.innerHTML = items.map((item, index) => `
+          <div class="split-section">
+            <div class="text-content">
+              <h2>${item.data.title}</h2>
+              <p>${item.data.desc}</p>
+              <div class="action-buttons">
+                <a href="https://wa.me/${WA_PHONE}?text=I%20am%20interested%20in%20${encodeURIComponent(item.data.title)}" 
+                   class="btn-main" target="_blank">
+                   <i class="fab fa-whatsapp"></i> Contact Us
+                </a>
+                <a href="mailto:${EMAIL}?subject=Inquiry: ${encodeURIComponent(item.data.title)}" 
+                   class="btn-email">
+                   <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="${item.data.img}" alt="${item.data.title}" onerror="this.src='https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80'">
+            </div>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        console.error('Error loading services:', error);
+        // Show default content on error
+        document.getElementById('services-container').innerHTML = `
+          <div class="split-section">
+            <div class="text-content">
+              <h2>Energy & Agriculture Services</h2>
+              <p>Contact us for more information about our energy and agriculture services.</p>
+              <div class="action-buttons">
+                <a href="https://wa.me/${WA_PHONE}" class="btn-main" target="_blank">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:${EMAIL}" class="btn-email">
+                  <i class="fas fa-envelope"></i> Email
+                </a>
+              </div>
+            </div>
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Services">
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Load services when page loads
+    loadServices();
+  </script>
+
 </body>
 </html>
