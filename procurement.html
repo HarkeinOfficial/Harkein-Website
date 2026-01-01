@@ -19,6 +19,23 @@
     
     .logo-img img { height: 70px; width: auto; border-radius: 4px; border: 2px solid var(--gold); }
 
+    /* SOCIAL ICONS IN HEADER */
+    .header-social {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .social-icon {
+      color: var(--gold);
+      font-size: 20px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      color: white;
+      transform: scale(1.1);
+    }
+
     /* HAMBURGER & NAV */
     .nav-menu { display: flex; align-items: center; gap: 25px; }
     .nav-menu a{color:white; text-decoration:none; font-weight:500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s;}
@@ -32,6 +49,7 @@
     /* RESPONSIVE MENU */
     @media(max-width: 768px) {
         .hamburger { display: block; }
+        .header-social { order: -1; }
         .nav-menu { position: absolute; top: 100%; left: 0; width: 100%; background: var(--navy); flex-direction: column; padding: 20px 0; gap: 20px; display: none; border-bottom: 3px solid var(--gold); }
         .nav-menu.active { display: flex; }
     }
@@ -50,10 +68,89 @@
     .section-header .line { width: 60px; height: 4px; background: var(--gold); margin: 0 auto; }
 
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px;}
-    .trading-item { background: white; padding: 40px; border-radius: 8px; border-top: 4px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
-    .trading-item:hover { transform: translateY(-5px); }
-    .trading-item i { font-size: 40px; color: var(--navy); margin-bottom: 20px; display: block; }
-    .trading-item h3 { color: var(--navy); margin-top: 0; font-size: 22px; }
+    .trading-item { 
+      background: white; 
+      padding: 40px; 
+      border-radius: 8px; 
+      border-top: 4px solid var(--gold); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .trading-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
+      transition: 0.5s;
+    }
+    .trading-item:hover::before {
+      left: 100%;
+    }
+    .trading-item:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+    .trading-item i { font-size: 40px; color: var(--navy); margin-bottom: 20px; display: block; transition: 0.3s; }
+    .trading-item:hover i { color: var(--gold); transform: scale(1.1); }
+    .trading-item h3 { color: var(--navy); margin-top: 0; font-size: 22px; margin-bottom: 15px; }
+    .trading-item p { color: #64748b; line-height: 1.8; }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: var(--grey);
+      border-radius: 8px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 40px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: white;
+      border: 2px solid var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+    .btn-secondary {
+      background: white;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-secondary:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* LOADING STATE */
+    .loading {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--text);
+      font-size: 18px;
+      grid-column: 1 / -1;
+    }
 
     /* FOOTER */
     footer{background:#0b1120; color:rgba(255,255,255,0.6); padding:60px 0; font-size: 14px;}
@@ -63,6 +160,29 @@
     .footer-col ul li { margin-bottom: 10px; }
     .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
     .footer-col a:hover { color: var(--gold); }
+    
+    /* FOOTER SOCIAL ICONS */
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .footer-social a {
+      color: var(--gold);
+      font-size: 24px;
+      transition: 0.3s;
+    }
+    .footer-social a:hover {
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    @media(max-width: 768px) {
+      .hero-text h1 { font-size: 32px; }
+      .section-header h2 { font-size: 28px; }
+      .cta-buttons { flex-direction: column; }
+      .btn-cta { width: 100%; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -72,7 +192,18 @@
       <a href="index.html" class="logo-img">
         <img src="9227.jpg" alt="HARKEIN SYNERGIES">
       </a>
-      <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+      <div class="header-social">
+        <a href="https://instagram.com/harkein_synergies" target="_blank" class="social-icon" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:infoharkein@gmail.com" class="social-icon" title="Email Us">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/2349026824546" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+      </div>
       <nav class="nav-menu" id="navMenu">
         <a href="index.html">Home</a>
         <a href="properties.html">Real Estate</a>
@@ -101,7 +232,90 @@
             </p>
         </div>
 
-        <div class="grid">
+        <div class="grid" id="logistics-grid">
+            <div class="loading">Loading services...</div>
+        </div>
+        
+        <div class="cta-section">
+            <h3 style="color: var(--navy); font-size: 28px; margin-bottom: 10px;">Ready to Ship?</h3>
+            <p style="color: #64748b; max-width: 600px; margin: 0 auto;">Get a free quote for your freight forwarding, customs clearing, or procurement needs.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/2349026824546?text=I%20need%20a%20shipping%20quote" class="btn-cta btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Request Quote via WhatsApp
+                </a>
+                <a href="mailto:infoharkein@gmail.com?subject=Logistics Quote Request" class="btn-cta btn-secondary">
+                    <i class="fas fa-envelope"></i> Email for Quote
+                </a>
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+        <div class="footer-col">
+            <h4>Harkein Synergies</h4>
+            <p>A multi-sector conglomerate dedicated to excellence.</p>
+            <div class="footer-social">
+              <a href="https://instagram.com/harkein_synergies" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="mailto:infoharkein@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://wa.me/2349026824546" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Corporate</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="solutions.html">Enterprise Solutions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Divisions</h4>
+            <ul>
+                <li><a href="properties.html">Real Estate</a></li>
+                <li><a href="commodities.html">Energy & Agric</a></li>
+                <li><a href="procurement.html">Logistics</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Connect</h4>
+            <p>Email: <a href="mailto:infoharkein@gmail.com">infoharkein@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2349026824546">+234 902 682 4546</a></p>
+            <p style="margin-top: 15px;">&copy; 2025 Harkein Synergies.</p>
+            <p style="font-size: 12px; margin-top: 10px;">
+                <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+        var menu = document.getElementById("navMenu");
+        menu.classList.toggle("active");
+    }
+
+    const API_URL = 'https://harkein-backend-production.up.railway.app';
+    const WA_PHONE = '2349026824546';
+    const EMAIL = 'infoharkein@gmail.com';
+
+    async function loadLogisticsServices() {
+      try {
+        const response = await fetch(`${API_URL}/api/items/logistics`);
+        const items = await response.json();
+        
+        const grid = document.getElementById('logistics-grid');
+        
+        if (items.length === 0) {
+          // Show default services
+          grid.innerHTML = `
             <div class="trading-item">
                 <i class="fas fa-ship"></i>
                 <h3>Freight Forwarding</h3>
@@ -122,51 +336,50 @@
                 <h3>Procurement Services</h3>
                 <p>We source construction materials and industrial hardware directly from manufacturers for large-scale development projects.</p>
             </div>
-        </div>
+          `;
+          return;
+        }
         
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="contact.html" class="nav-btn" style="padding: 15px 40px; font-size: 16px;">Request Shipping Quote</a>
-        </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-        <div class="footer-col">
-            <h4>Harkein Synergies</h4>
-            <p>A multi-sector conglomerate dedicated to excellence.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Corporate</h4>
-            <ul>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="solutions.html">Enterprise Solutions</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Divisions</h4>
-            <ul>
-                <li><a href="properties.html">Real Estate</a></li>
-                <li><a href="commodities.html">Energy & Agric</a></li>
-                <li><a href="procurement.html">Logistics</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Connect</h4>
-            <p>&copy; 2025 Harkein Synergies.</p>
-            <p style="font-size: 12px; margin-top: 10px;">
-                <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
-            </p>
-        </div>
-    </div>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-        var menu = document.getElementById("navMenu");
-        menu.classList.toggle("active");
+        // Display dynamic services from database
+        grid.innerHTML = items.map(item => `
+          <div class="trading-item">
+              <i class="${item.data.icon || 'fas fa-truck'}"></i>
+              <h3>${item.data.title}</h3>
+              <p>${item.data.desc}</p>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        console.error('Error loading logistics services:', error);
+        // Show default services on error
+        document.getElementById('logistics-grid').innerHTML = `
+          <div class="trading-item">
+              <i class="fas fa-ship"></i>
+              <h3>Freight Forwarding</h3>
+              <p>Air and Sea freight solutions from China, USA, and Europe to Nigeria.</p>
+          </div>
+          <div class="trading-item">
+              <i class="fas fa-truck-moving"></i>
+              <h3>Haulage & Distribution</h3>
+              <p>Interstate trucking services for heavy-duty goods across Nigeria.</p>
+          </div>
+          <div class="trading-item">
+              <i class="fas fa-file-signature"></i>
+              <h3>General Contracts</h3>
+              <p>Licensed contractors for Federal and State government agencies.</p>
+          </div>
+          <div class="trading-item">
+              <i class="fas fa-warehouse"></i>
+              <h3>Procurement Services</h3>
+              <p>We source construction materials and industrial hardware.</p>
+          </div>
+        `;
+      }
     }
+
+    // Load services when page loads
+    loadLogisticsServices();
   </script>
+
 </body>
 </html>
